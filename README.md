@@ -28,7 +28,7 @@ MRG31k3p, MRG32k3a, LFSR113 and Philox-4×32-10 generators.
         Visual Studio users can use [CMake Tools for Visual Studio](https://cmaketools.codeplex.com/).
       - A recent C compiler, such as [GCC 4.9](https://gcc.gnu.org/), or Visual Studio 2013.
 
-3.  Get the (clRNG source code)[https://github.com/clMathLibraries/clRNG].
+3.  Get the [clRNG source code](https://github.com/clMathLibraries/clRNG).
 
 4.  Configure the project using CMake (to generate standard makefiles) or
     CMake Tools for Visual Studio (to generate solution and project files).
