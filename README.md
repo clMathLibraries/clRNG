@@ -16,6 +16,10 @@ MRG31k3p, MRG32k3a, LFSR113 and Philox-4×32-10 generators.
 - [**Tutorial Document**  
   *clRNG*: A Random Number API with Multiple Streams for OpenCL](http://clmathlibraries.github.io/clRNG/docs/clrng-api.pdf)
 
+## Releases
+
+The first public version is v1.0.0 beta. Please go to [releases](https://github.com/clMathLibraries/clRNG/releases) for downloads.
+
 ## Building
 
 1.  Install the runtime dependency:
