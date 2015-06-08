@@ -47,6 +47,13 @@
 
 #define __CLRNG_DEVICE_API
 
+#ifdef CLRNG_SINGLE_PRECISION
+#define _CLRNG_FPTYPE cl_float
+#else
+#define _CLRNG_FPTYPE cl_double
+#pragma OPENCL EXTENSION cl_amd_fp64 : enable
+#endif
+
 typedef double cl_double;
 typedef float  cl_float;
 typedef int    cl_int;
@@ -54,12 +61,7 @@ typedef uint   cl_uint;
 typedef long   cl_long;
 typedef ulong  cl_ulong;
 
-#ifdef CLRNG_SINGLE_PRECISION
-  #define _CLRNG_FPTYPE cl_float
-#else
-  #define _CLRNG_FPTYPE cl_double
-  #pragma OPENCL EXTENSION cl_amd_fp64 : enable
-#endif
+
 #define _CLRNG_TAG_FPTYPE(name)           _CLRNG_TAG_FPTYPE_(name,_CLRNG_FPTYPE)
 #define _CLRNG_TAG_FPTYPE_(name,fptype)   _CLRNG_TAG_FPTYPE__(name,fptype)
 #define _CLRNG_TAG_FPTYPE__(name,fptype)  name##_##fptype
