@@ -67,6 +67,9 @@ static char lib_includes[1024];
 
 const char* clrngGetLibraryDeviceIncludes(cl_int* err)
 {
+	if (err) 
+		*err = CLRNG_SUCCESS;
+
 	int nbytes;
 #ifdef _MSC_VER
 	nbytes = sprintf_s(
