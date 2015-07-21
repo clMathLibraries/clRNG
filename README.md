@@ -16,50 +16,54 @@ MRG31k3p, MRG32k3a, LFSR113 and Philox-4×32-10 generators.
 - [**Tutorial Document**  
   *clRNG*: A Random Number API with Multiple Streams for OpenCL](http://clmathlibraries.github.io/clRNG/docs/clrng-api.pdf)
 
+## Releases
+
+The first public version is v1.0.0 beta. Please go to [releases](https://github.com/clMathLibraries/clRNG/releases) for downloads.
+
 ## Building
 
-Before configuring and building the library, make sure an OpenCL software
-development kit is available on your platform.
+1.  Install the runtime dependency:
 
+      - An OpenCL SDK, such as [APP SDK](http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-parallel-processing-app-sdk/).
 
-### Under Linux
+2.  Install the build dependencies:
 
-Run:
+      - The [CMake](http://www.cmake.org/) cross-platform build system.
+        Visual Studio users can use [CMake Tools for Visual Studio](https://cmaketools.codeplex.com/).
+      - A recent C compiler, such as [GCC 4.9](https://gcc.gnu.org/), or Visual Studio 2013.
 
-    cmake src
+3.  Get the [clRNG source code](https://github.com/clMathLibraries/clRNG).
+
+4.  Configure the project using CMake (to generate standard makefiles) or
+    CMake Tools for Visual Studio (to generate solution and project files).
+
+5.  Build the project.
+
+6.  Install the project (by default, the library will be installed in the
+    `package` directory under the build directory).
+
+7.  Point the environment variable `CLRNG_ROOT` to the installation directory,
+    i.e., the directory that contains the `include` and `cl` subdirectories.
+
+8.  In order to execute the example programs (under the `bin` subdirectory of
+    the installation directory) or to link clRNG into other software, the
+    dynamic linker must be informed where to find the clRNG shared library.
+    The name and location of the shared library generally depend on the platform.
+
+9.  Optionally run the tests.
+
+### Example Instructions for Linux
+
+On a 64-bit Linux platform, steps 3 through 9 from above, executed in a
+Bash-compatible shell, could consist of:
+
+    git clone https://github.com/clMathLibraries/clRNG.git
+    mkdir clRNG.build; cd clRNG.build; cmake ../clRNG/src
     make
     make install
-
-By default, `make install` packages the files necessary for distribution of the
-library in the `package` subdirectory.
-
-
-## Installing
-
-The environment variable `CLRNG_ROOT` must be pointed to the root of the
-packaged files, or more specifically, the directory that contains the `include`
-and `cl` subdirectories.
-
-Also make sure that the clRNG shared library can be found by the dynamic
-linker.  The location of the shared library can depend on the platform.  If you
-installed the library on a 64-bit Linux platform, it can normally be found
-under the `lib64` subdirectory of the installation directory.
-
-
-### Under Linux
-
-On a 64-bit Linux platform with a Bash-compatible shell, if the current
-directory is that in which you ran `cmake src`, you can update the necessary
-environment variables by typing:
-
     export CLRNG_ROOT=$PWD/package
     export LD_LIBRARY_PATH=$CLRNG_ROOT/lib64:$LD_LIBRARY_PATH
-
-Then, you can check that everything works correctly by executing the unit tests
-with:
-
     $CLRNG_ROOT/bin/CTest
-
 
 ## Examples
 
