@@ -31,13 +31,7 @@
 # ########################################################################
 
 
-if( WIN32 )
-	# We require 2.8.3 for windows because of a bug in cmake that prevented vs2010 from generating
-	# executables properly with multiple periods
-	cmake_minimum_required( VERSION 2.8.3 )
-else( )
-	cmake_minimum_required( VERSION 2.6 )
-endif( )
+cmake_minimum_required( VERSION 3.1 )
 
 if( CMAKE_GENERATOR MATCHES "NMake" )
 	option( NMAKE_COMPILE_VERBOSE "Print compile and link strings to the console" OFF )
@@ -168,18 +162,18 @@ set( SUFFIX_BIN ${SUFFIX_BIN_DEFAULT} CACHE STRING "String to append to 'bin' in
 
 # This will define OPENCL_FOUND
 find_package( OpenCL )
-
-if( (${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION} VERSION_LESS 2.8) ) 
-	message( STATUS "Cmake version 2.8 or greater needed to use GTest" )
-else()
-	# This will define GTEST_FOUND
-	find_package( GTest )
-
-	# Hack to get googletest v1.6 to work with vs2012
-	if( MSVC11 )
-		add_definitions( "/D_VARIADIC_MAX=10" )
-	endif( )
+if ( ${OpenCL_VERSION_STRING} VERSION_LESS 1.2 )
+	message( FATAL_ERROR "OpenCL 1.2 or greater required" )
 endif()
+
+# This will define GTEST_FOUND
+find_package( GTest )
+
+# Hack to get googletest v1.6 to work with vs2012
+if( MSVC11 )
+	add_definitions( "/D_VARIADIC_MAX=10" )
+endif( )
+
 
 # Enable building of the clACML client if both requested and all dependencies are found
 if( BUILD_CLIENT )
