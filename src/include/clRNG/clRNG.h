@@ -370,9 +370,9 @@ CLRNGAPI const char* clrngGetErrorString();
  *  the value of the \c CLRNG_ROOT environment variable.
  *  This string is meant to be passed as an option to the OpenCL C compiler for
  *  programs that make use of the clRNG device-side headers.
- *  If the \c CLRNG_ROOT environment variable is not defined, the current
- *  directory of execution of the program is substituted for the library root
- *  path.
+ *  If the \c CLRNG_ROOT environment variable is not defined, it defaults
+ *  `/usr` if the file `/usr/include/clRNG/clRNG.h` exists, else to the current
+ *  directory of execution of the program.
  *
  *  A static buffer is return and need not be released; it could change upon
  *  successive calls to the function.
@@ -389,8 +389,9 @@ CLRNGAPI const char* clrngGetLibraryDeviceIncludes(cl_int* err);
 
 /*! @brief Retrieve the library installation path
  *
- *  @return Value of the CLRNG_ROOT environment variable, if defined, else the
- *  current directory (.) of execution of the program.
+ *  @return Value of the CLRNG_ROOT environment variable, if defined; else,
+ *  `/usr` if the file `/usr/include/clRNG/clRNG.h` exists; or, the current
+ *  directory (.) of execution of the program otherwise.
  */
 CLRNGAPI const char* clrngGetLibraryRoot();
 
