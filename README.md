@@ -44,6 +44,8 @@ The first public version is v1.0.0 beta. Please go to [releases](https://github.
 
 7.  Point the environment variable `CLRNG_ROOT` to the installation directory,
     i.e., the directory under which `include/clRNG` can be found.
+    This step is optional if the library is installed under `/usr`, which is
+    the default.
 
 8.  In order to execute the example programs (under the `bin` subdirectory of
     the installation directory) or to link clRNG into other software, the

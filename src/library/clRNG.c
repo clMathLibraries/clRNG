@@ -39,6 +39,11 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#ifdef _MSC_VER
+#include <io.h>
+#else
+#include <unistd.h>
+#endif
 
 #define CASE_ERR_(code,msg) case code: base = msg; break
 #define CASE_ERR(code)      CASE_ERR_(CLRNG_ ## code, MSG_ ## code)
@@ -51,13 +56,27 @@ const char* clrngGetErrorString()
 }
 
 
-static char lib_path_default[] = ".";
+static char lib_path_default1[] = "/usr";
+static char lib_path_default1_check[] = "/usr/include/clRNG/clRNG.h";
+static char lib_path_default2[] = ".";
 
 const char* clrngGetLibraryRoot()
 {
 	const char* lib_path = getenv("CLRNG_ROOT");
-	if (lib_path == NULL)
-		return lib_path_default;
+
+	if (lib_path == NULL) {
+		// check if lib_path_default1_check exists
+		if (
+#ifdef _MSC_VER
+		_access(lib_path_default1_check, 0) != -1
+#else
+		access(lib_path_default1_check, F_OK) != -1
+#endif
+		)
+			return lib_path_default1;
+		// last resort
+		return lib_path_default2;
+	}
 	else
 		return lib_path;
 }
