@@ -53,11 +53,11 @@ endif( )
 #endif( )
 
 set( clRNG.Headers  private.h 
-		            ../include/clRNG.h
-		            ../include/mrg32k3a.h 
-		            ../include/mrg31k3p.h 
-		            ../include/lfsr113.h
-		            ../include/philox432.h
+			    ../include/clRNG/clRNG.h
+			    ../include/clRNG/mrg32k3a.h
+			    ../include/clRNG/mrg31k3p.h
+			    ../include/clRNG/lfsr113.h
+			    ../include/clRNG/philox432.h
 		            )
 
 set( clRNG.Files ${clRNG.Source} ${clRNG.Headers} )

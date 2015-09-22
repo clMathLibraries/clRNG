@@ -39,7 +39,7 @@
 #ifndef PHILOX432_H
 #define PHILOX432_H
 
-#include <clRNG.h>
+#include <clRNG/clRNG.h>
 #include <stdio.h>
 
 

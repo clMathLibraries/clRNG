@@ -49,8 +49,8 @@
 #error "CTEST_RNG_HEADER undefined"
 #endif
 
-#define RNG_HOST_HEADER   <CTEST_RNG_HEADER.h>
-#define RNG_DEVICE_HEADER <CTEST_RNG_HEADER.clh>
+#define RNG_HOST_HEADER   <clRNG/CTEST_RNG_HEADER.h>
+#define RNG_DEVICE_HEADER <clRNG/CTEST_RNG_HEADER.clh>
 
 #define _RNG_MANGLE(ident)          _RNG_MANGLE_(ident,CTEST_RNG_TYPE)
 #define _RNG_MANGLE_(ident,rng)     _RNG_MANGLE__(ident,rng)

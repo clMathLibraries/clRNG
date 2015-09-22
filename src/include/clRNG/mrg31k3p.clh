@@ -41,7 +41,7 @@
 #ifndef MRG31K3P_CLH
 #define MRG31K3P_CLH
 
-#include <clRNG.clh>
+#include <clRNG/clRNG.clh>
 
 
 /********************************************************************************
@@ -152,7 +152,7 @@ clrngStatus clrngMrg31k3pCopyOverStreamsToGlobal(size_t count, __global clrngMrg
 #endif
 
 // code that is common to host and device
-#include <private/mrg31k3p.c.h>
+#include <clRNG/private/mrg31k3p.c.h>
 
 #endif
 

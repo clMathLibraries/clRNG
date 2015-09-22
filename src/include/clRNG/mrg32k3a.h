@@ -39,7 +39,7 @@
 #ifndef MRG32K3A_H
 #define MRG32K3A_H
 
-#include <clRNG.h>
+#include <clRNG/clRNG.h>
 #include <stdio.h>
 
 

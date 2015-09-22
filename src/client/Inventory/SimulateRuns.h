@@ -33,7 +33,7 @@
 #ifndef SIMULATERUNS_SS_H
 #define SIMULATERUNS_SS_H
 
-#include <mrg31k3p.h>
+#include <clRNG/mrg31k3p.h>
 #include "../common.h"
 
 //Device Simulation
