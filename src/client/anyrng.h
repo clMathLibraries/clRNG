@@ -74,8 +74,8 @@
     #error Exactly one of USE_MRG31K3P, USE_MRG32K3A or USE_LFSR113 must be defined.
 #endif
 
-#define RNG_HOST_HEADER   <RNG_HEADER_NAME.h>
-#define RNG_DEVICE_HEADER <RNG_HEADER_NAME.clh>
+#define RNG_HOST_HEADER   <clRNG/RNG_HEADER_NAME.h>
+#define RNG_DEVICE_HEADER <clRNG/RNG_HEADER_NAME.clh>
 
 #define RNG_MEMBER_(rng, ident)  RNG_MEMBER__(rng, ident)
 #define RNG_MEMBER__(rng, ident) clrng ## rng ## ident

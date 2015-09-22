@@ -42,7 +42,7 @@
 
 
 /*! [clRNG header] */
-#include <mrg31k3p.h>
+#include <clRNG/mrg31k3p.h>
 /*! [clRNG header] */
 
 int task(cl_context context, cl_device_id device, cl_command_queue queue, void* data)

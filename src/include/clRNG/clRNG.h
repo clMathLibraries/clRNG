@@ -56,7 +56,7 @@
  *  generator with a \c .h extension on the host, or a \c .clh extension on
  *  the device) and use type and function names that start with \c clrngMrg31k3p:
  *  \code
- *  #include <mrg31k3p.h>
+ *  #include <clRNG/mrg31k3p.h>
  *
  *  cl_double foo(clrngMrg31k3pStream* stream) {
  *    return clrngMrg31k3pRandomU01(stream);
@@ -67,7 +67,7 @@
  *  To use the LFSR113 generator instead of MRG31k3p, one must change the
  *  include directive and use type and function names that start with \c clrngLfsr113:
  *  \code
- *  #include <lfsr113.h>
+ *  #include <clRNG/lfsr113.h>
  *
  *  cl_double foo(clrngLfsr113Stream* stream) {
  *    return clrngLfsr113RandomU01(stream);
@@ -87,7 +87,7 @@
  *
  *  For all features of the library to work properly, the \c CLRNG_ROOT
  *  environment variable must be set to point to the installation path of the 
- *  clRNG package, that is, the directory under which lies the \c cl/include
+ *  clRNG package, that is, the directory under which lies the \c include/clRNG
  *  subdirectory.
  *  Means of setting an environment variable depend on the operating system 
  *  used.
@@ -252,7 +252,7 @@
  *  MRG31k3p generator, use:
  *  \code{c}
  *      #define  CLRNG_ENABLE_SUBSTREAMS
- *      #include <mrg31k3p.clh>
+ *      #include <clRNG/mrg31k3p.clh>
  *  \endcode
  *
  *  A comprehensive list of supported device-side library options are described
@@ -366,7 +366,7 @@ CLRNGAPI const char* clrngGetErrorString();
 
 /*! @brief Generate an include option string for use with the OpenCL C compiler
  *
- *  Generate and return "-I${CLRNG_ROOT}/cl/include", where \c ${CLRNG_ROOT} is
+ *  Generate and return "-I${CLRNG_ROOT}/include", where \c ${CLRNG_ROOT} is
  *  the value of the \c CLRNG_ROOT environment variable.
  *  This string is meant to be passed as an option to the OpenCL C compiler for
  *  programs that make use of the clRNG device-side headers.

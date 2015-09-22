@@ -34,7 +34,7 @@
 * @brief Implementation of functions defined in clRNG.h and private.h
 */
 
-#include <clRNG.h>
+#include <clRNG/clRNG.h>
 #include "private.h"
 #include <stdio.h>
 #include <stdarg.h>
@@ -78,7 +78,7 @@ const char* clrngGetLibraryDeviceIncludes(cl_int* err)
 #endif
 		lib_includes,
 		sizeof(lib_includes),
-		"-I\"%s/cl/include\"",
+		"-I\"%s/include\"",
 		clrngGetLibraryRoot());
 
 #ifdef _MSC_VER

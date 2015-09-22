@@ -30,7 +30,7 @@
  ***********************************************************************
  */
 
-#include <mrg31k3p.h>
+#include <clRNG/mrg31k3p.h>
 
 #include "private.h"
 #include <stdlib.h>
@@ -53,7 +53,7 @@ struct clrngMrg31k3pStreamCreator_ {
 #include "./modularHost.c.h"
 
 // code that is common to host and device
-#include "../cl/include/private/mrg31k3p.c.h"
+#include "../include/clRNG/private/mrg31k3p.c.h"
 
 
 
@@ -463,7 +463,7 @@ clrngStatus clrngMrg31k3pDeviceRandomU01Array_(size_t streamCount, cl_mem stream
 	//create the program
 	const char *sources[4] = {
 	        singlePrecision ? "#define CLRNG_SINGLE_PRECISION\n" : "",
-		"#include <mrg31k3p.clh>\n"
+		"#include <clRNG/mrg31k3p.clh>\n"
 		"__kernel void fillBufferU01(__global clrngMrg31k3pHostStream* streams, uint numberCount, __global ",
 		singlePrecision ? "float" : "double",
 		"* numbers) {\n"

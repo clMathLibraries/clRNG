@@ -36,7 +36,7 @@
 
 #error This file is a template for specific RNG implementations; it should not be included as is.  Use an RNG-specific header such as mrg31k3p.h instead.
 
-#include <clRNG.h>
+#include <clRNG/clRNG.h>
 
 /* for FILE in clrngWriteStreamInfo() */
 #include <stdio.h>
@@ -118,14 +118,14 @@
  *  \code{c}
  *      #define  CLRNG_ENABLE_SUBSTREAMS
  *      #define  CLRNG_SINGLE_PRECISION
- *      #include <mrg31k3p.clh>
+ *      #include <clRNG/mrg31k3p.clh>
  *  \endcode
  *
  *  To generate single-precision floating point numbers also on the host, still
  *  using the MRG31k3p generator, the host code should contain:
  *  \code{c}
  *      #define CLRNG_SINGLE_PRECISION
- *      #include <mrg31k3p.h>
+ *      #include <clRNG/mrg31k3p.h>
  *  \endcode
  *  
  *  The functions described here are all available on the host, in all implementations, 
@@ -746,7 +746,7 @@ clrngStatus clrngAdvanceStreams(size_t count, clrngStream* streams, cl_int e, cl
  *  @note This function requires access to the clRNG device 
  *  header files (like \c mrg31k3p.clh) and assumes that the environment 
  *  variable \c CLRNG_ROOT points to the installation path of the 
- *  clRNG package, where lies the \c cl/include subdirectory 
+ *  clRNG package, where lies the \c include subdirectory 
  *  that contains these files.
  *  Means of setting an environment variable depend on the operating system 
  *  used.

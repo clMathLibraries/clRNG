@@ -43,7 +43,7 @@ The first public version is v1.0.0 beta. Please go to [releases](https://github.
     `package` directory under the build directory).
 
 7.  Point the environment variable `CLRNG_ROOT` to the installation directory,
-    i.e., the directory that contains the `include` and `cl` subdirectories.
+    i.e., the directory under which `include/clRNG` can be found.
 
 8.  In order to execute the example programs (under the `bin` subdirectory of
     the installation directory) or to link clRNG into other software, the
@@ -81,8 +81,8 @@ by directly using device side headers (.clh) in your OpenCL kernel.
 #include <stdlib.h>
 #include <string.h>
 
-#include "clRNG.h"
-#include "mrg31k3p.h"
+#include "clRNG/clRNG.h"
+#include "clRNG/mrg31k3p.h"
 
 int main( void )
 {
@@ -109,7 +109,7 @@ int main( void )
     /* Sample kernel that calls clRNG device-side interfaces to generate random numbers */
     const char *kernelSrc[] = {
     "    #define CLRNG_SINGLE_PRECISION                                   \n",
-    "    #include <mrg31k3p.clh>                                          \n",
+    "    #include <clrng/mrg31k3p.clh>                                    \n",
     "                                                                     \n",
     "    __kernel void example(__global clrngMrg31k3pHostStream *streams, \n",
     "                          __global float *out)                       \n",
@@ -138,7 +138,7 @@ int main( void )
     if(clrng_root == NULL) printf("\nSpecify environment variable CLRNG_ROOT as described\n");
     strcpy(include_str, "-I ");
     strcat(include_str, clrng_root);
-    strcat(include_str, "/cl/include");
+    strcat(include_str, "/include");
 
     /* Create sample kernel */
     kernelLines = sizeof(kernelSrc) / sizeof(kernelSrc[0]);
