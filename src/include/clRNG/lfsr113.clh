@@ -41,7 +41,7 @@
 #ifndef LFSR113_CLH
 #define LFSR113_CLH
 
-#include <clRNG.clh>
+#include <clRNG/clRNG.clh>
 
 
 /********************************************************************************
@@ -144,7 +144,7 @@ clrngStatus clrngLfsr113CopyOverStreamsToGlobal(size_t count, __global clrngLfsr
 }
 
 // code that is common to host and device
-#include <private/lfsr113.c.h>
+#include <clRNG/private/lfsr113.c.h>
 
 #endif
 

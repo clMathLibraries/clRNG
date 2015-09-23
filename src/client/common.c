@@ -37,7 +37,7 @@
 #include <string.h>
 #include "common.h"
 
-#include <clRNG.h>
+#include <clRNG/clRNG.h>
 
 
 #ifdef _MSC_VER

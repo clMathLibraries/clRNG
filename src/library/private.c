@@ -33,7 +33,7 @@
 /* @file private.c
  * @brief Implementation of functions defined in clRNG.h and private.h
  */
-#include <clRNG.h>
+#include <clRNG/clRNG.h>
 #include "private.h"
 
 #include <stdio.h>

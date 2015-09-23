@@ -50,11 +50,11 @@ set( clRNG.CTest.Source
   ${PROJECT_SOURCE_DIR}/client/common.c
 )
 set( clRNG.CTest.Headers
-  ${PROJECT_SOURCE_DIR}/include/clRNG.h
-  ${PROJECT_SOURCE_DIR}/include/mrg31k3p.h
-  ${PROJECT_SOURCE_DIR}/include/mrg32k3a.h
-  ${PROJECT_SOURCE_DIR}/include/lfsr113.h
-  ${PROJECT_SOURCE_DIR}/include/philox432.h
+  ${PROJECT_SOURCE_DIR}/include/clRNG/clRNG.h
+  ${PROJECT_SOURCE_DIR}/include/clRNG/mrg31k3p.h
+  ${PROJECT_SOURCE_DIR}/include/clRNG/mrg32k3a.h
+  ${PROJECT_SOURCE_DIR}/include/clRNG/lfsr113.h
+  ${PROJECT_SOURCE_DIR}/include/clRNG/philox432.h
   ${PROJECT_SOURCE_DIR}/client/common.h
   ctest/util.h
   ctest/mangle.h

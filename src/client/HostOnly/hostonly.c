@@ -33,7 +33,7 @@
 #include <stdio.h>
 
 /*! [clRNG header] */
-#include <mrg31k3p.h>
+#include <clRNG/mrg31k3p.h>
 /*! [clRNG header] */
 
 int main() {

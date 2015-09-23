@@ -36,14 +36,14 @@
 #include <string.h>
 #include <stdint.h>
 #include <assert.h>
-#include "../cl/include/private/Random123/philox.h"
+#include "../include/clRNG/private/Random123/philox.h"
 #include "uniform.hpp"
 
 
-#include <philox432.h>
-#include <lfsr113.h>
-#include <mrg31k3p.h>
-#include <mrg32k3a.h>
+#include <clRNG/philox432.h>
+#include <clRNG/lfsr113.h>
+#include <clRNG/mrg31k3p.h>
+#include <clRNG/mrg32k3a.h>
 
 typedef r123::Philox4x32 CBRNG;
 

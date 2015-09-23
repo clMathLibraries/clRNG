@@ -32,7 +32,7 @@
 
 
 
-set( Common.Headers common.h ../include/clRNG.h ../include/mrg31k3p.h )
+set( Common.Headers common.h ../include/clRNG/clRNG.h ../include/clRNG/mrg31k3p.h )
 set( Common.Source  common.c )
 
 #  workitem

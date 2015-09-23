@@ -34,8 +34,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include <clRNG.h>
-#include <mrg31k3p.h>
+#include <clRNG/clRNG.h>
+#include <clRNG/mrg31k3p.h>
 #include "../common.h"
 #include "Types.h"
 

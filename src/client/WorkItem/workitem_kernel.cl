@@ -36,7 +36,7 @@
 */
 
 /*! [clRNG header] */
-#include <mrg31k3p.clh>
+#include <clRNG/mrg31k3p.clh>
 /*! [clRNG header] */
 
 /*! [kernel] */
