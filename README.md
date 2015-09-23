@@ -111,7 +111,7 @@ int main( void )
     /* Sample kernel that calls clRNG device-side interfaces to generate random numbers */
     const char *kernelSrc[] = {
     "    #define CLRNG_SINGLE_PRECISION                                   \n",
-    "    #include <clrng/mrg31k3p.clh>                                    \n",
+    "    #include <clRNG/mrg31k3p.clh>                                    \n",
     "                                                                     \n",
     "    __kernel void example(__global clrngMrg31k3pHostStream *streams, \n",
     "                          __global float *out)                       \n",
