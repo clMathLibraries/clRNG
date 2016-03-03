@@ -16,9 +16,15 @@ MRG31k3p, MRG32k3a, LFSR113 and Philox-4×32-10 generators.
 - [**Tutorial Document** (please cite this document if you use clRNG)  
   *clRNG*: A Random Number API with Multiple Streams for OpenCL](http://clmathlibraries.github.io/clRNG/docs/clrng-api.pdf)
 
+## What's New
+
+Libraries related to clRNG, for probability distributions and quasi-Monte Carlo methods, are available:
+ - [**clProbDist**](https://github.com/umontreal-simul/clProbDist)
+ - [**clQMC**](https://github.com/umontreal-simul/clQMC)
+
 ## Releases
 
-The first public version is v1.0.0 beta. Please go to [releases](https://github.com/clMathLibraries/clRNG/releases) for downloads.
+The first public version of clRNG is v1.0.0 beta. Please go to [releases](https://github.com/clMathLibraries/clRNG/releases) for downloads.
 
 ## Building
 
