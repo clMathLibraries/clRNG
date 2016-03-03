@@ -13,7 +13,7 @@ MRG31k3p, MRG32k3a, LFSR113 and Philox-4×32-10 generators.
 
 - [**HTML Documentation**  
   (generated with Doxygen)](http://clmathlibraries.github.io/clRNG/htmldocs/index.html)
-- [**Tutorial Document**  
+- [**Tutorial Document** (please cite this document if you use clRNG)  
   *clRNG*: A Random Number API with Multiple Streams for OpenCL](http://clmathlibraries.github.io/clRNG/docs/clrng-api.pdf)
 
 ## Releases
