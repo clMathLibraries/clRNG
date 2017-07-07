@@ -195,12 +195,22 @@ added to each of the *features.h files, AND to examples/ut_features.cpp.
 /* N.B.  most other compilers (icc, nvcc, open64, llvm) will also define __GNUC__, so order matters. */
 #if defined(__OPENCL_VERSION__) && __OPENCL_VERSION__ > 0
 #include "openclfeatures.h"
+#elif defined(__CUDACC__)
+#include "nvccfeatures.h"
+#elif defined(__ICC)
+#include "iccfeatures.h"
+#elif defined(__xlC__)
+#include "xlcfeatures.h"
+#elif defined(__SUNPRO_C) || defined(__SUNPRO_CC)
+#include "sunprofeatures.h"
 #elif defined(__OPEN64__)
 #include "open64features.h"
 #elif defined(__clang__)
 #include "clangfeatures.h"
 #elif defined(__GNUC__)
 #include "gccfeatures.h"
+#elif defined(__PGI)
+#include "pgccfeatures.h"
 #elif defined(_MSC_FULL_VER)
 #include "msvcfeatures.h"
 #else
