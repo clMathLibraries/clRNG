@@ -52,7 +52,7 @@
  */
 
 // code that is common to host and device
-#include "../cl/include/private/modular.c.h"
+#include "../include/clRNG/private/modular.c.h"
 
 #ifdef MODULAR_FIXED_SIZE
 #  define N MODULAR_FIXED_SIZE

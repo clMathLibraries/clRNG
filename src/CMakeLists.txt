@@ -31,13 +31,7 @@
 # ########################################################################
 
 
-if( WIN32 )
-	# We require 2.8.3 for windows because of a bug in cmake that prevented vs2010 from generating
-	# executables properly with multiple periods
-	cmake_minimum_required( VERSION 2.8.3 )
-else( )
-	cmake_minimum_required( VERSION 2.6 )
-endif( )
+cmake_minimum_required( VERSION 2.8.10 )
 
 if( CMAKE_GENERATOR MATCHES "NMake" )
 	option( NMAKE_COMPILE_VERBOSE "Print compile and link strings to the console" OFF )
@@ -250,39 +244,39 @@ message( STATUS "CMAKE_CXX_COMPILER relwithdebinfo flags: " ${CMAKE_CXX_FLAGS_RE
 message( STATUS "CMAKE_EXE_LINKER link flags: " ${CMAKE_EXE_LINKER_FLAGS} )
 
 # configure a header file to pass the CMake version settings to the source, and package the header files in the output archive
-configure_file( "${PROJECT_SOURCE_DIR}/include/clRNG.version.h.in" "${PROJECT_BINARY_DIR}/include/clRNG.version.h" )
+configure_file( "${PROJECT_SOURCE_DIR}/include/clRNG/clRNG.version.h.in" "${PROJECT_BINARY_DIR}/include/clRNG/clRNG.version.h" )
 install( FILES 
-  "${PROJECT_BINARY_DIR}/include/clRNG.version.h" 
-  "include/clRNG.h"
-  "include/mrg31k3p.h"
-  "include/mrg32k3a.h"
-  "include/lfsr113.h"
-  "include/philox432.h"
+  "${PROJECT_BINARY_DIR}/include/clRNG/clRNG.version.h"
+  "include/clRNG/clRNG.h"
+  "include/clRNG/mrg31k3p.h"
+  "include/clRNG/mrg32k3a.h"
+  "include/clRNG/lfsr113.h"
+  "include/clRNG/philox432.h"
   DESTINATION 
-  "./include" )
+  "./include/clRNG" )
 
 install( FILES 
-  "cl/include/clRNG.clh"
-  "cl/include/mrg31k3p.clh"
-  "cl/include/mrg32k3a.clh"
-  "cl/include/lfsr113.clh"
-  "cl/include/philox432.clh"
+  "include/clRNG/clRNG.clh"
+  "include/clRNG/mrg31k3p.clh"
+  "include/clRNG/mrg32k3a.clh"
+  "include/clRNG/lfsr113.clh"
+  "include/clRNG/philox432.clh"
   DESTINATION 
-  "./cl/include" )
+  "./include/clRNG" )
 
 install( FILES 
-  "cl/include/private/modular.c.h"
-  "cl/include/private/mrg31k3p.c.h"
-  "cl/include/private/mrg32k3a.c.h"
-  "cl/include/private/lfsr113.c.h"
-  "cl/include/private/philox432.c.h"
+  "include/clRNG/private/modular.c.h"
+  "include/clRNG/private/mrg31k3p.c.h"
+  "include/clRNG/private/mrg32k3a.c.h"
+  "include/clRNG/private/lfsr113.c.h"
+  "include/clRNG/private/philox432.c.h"
   DESTINATION 
-  "./cl/include/private" )
+  "./include/clRNG/private" )
 
 install( DIRECTORY
-  "cl/include/private/Random123"
+  "include/clRNG/private/Random123"
   DESTINATION 
-  "./cl/include/private" )
+  "./include/clRNG/private" )
 
 # Recurse into subdirectory and start building files there
 if( BUILD_RUNTIME AND IS_DIRECTORY "${PROJECT_SOURCE_DIR}/library" )

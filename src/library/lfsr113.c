@@ -30,7 +30,7 @@
  ***********************************************************************
  */
 
-#include <lfsr113.h>
+#include <clRNG/lfsr113.h>
 
 #include "private.h"
 #include <stdlib.h>
@@ -47,7 +47,7 @@ struct clrngLfsr113StreamCreator_ {
 };
 
 // code that is common to host and device
-#include "../cl/include/private/lfsr113.c.h"
+#include "../include/clRNG/private/lfsr113.c.h"
 
 
 /*! @brief Default initial seed of the first stream
@@ -397,7 +397,7 @@ clrngStatus clrngLfsr113DeviceRandomU01Array_(size_t streamCount, cl_mem streams
 	//create the program
 	const char *sources[4] = {
 	        singlePrecision ? "#define CLRNG_SINGLE_PRECISION\n" : "",
-		"#include <lfsr113.clh>\n"
+		"#include <clRNG/lfsr113.clh>\n"
 		"__kernel void fillBufferU01(__global clrngLfsr113HostStream* streams, uint numberCount, __global ",
 		singlePrecision ? "float" : "double",
 		"* numbers) {\n"

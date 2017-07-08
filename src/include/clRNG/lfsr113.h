@@ -39,7 +39,7 @@
 #ifndef LFSR113_H
 #define LFSR113_H
 
-#include <clRNG.h>
+#include <clRNG/clRNG.h>
 #include <stdio.h>
 
 

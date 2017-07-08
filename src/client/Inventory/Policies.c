@@ -33,13 +33,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <clRNG.h>
+#include <clRNG/clRNG.h>
 #include "../common.h"
 #include "Policies.h"
 #include "SimulateRuns.h"
 
 /*! [clRNG header] */
-#include <mrg31k3p.h>
+#include <clRNG/mrg31k3p.h>
 /*! [clRNG header] */
 
 //************************************************************************

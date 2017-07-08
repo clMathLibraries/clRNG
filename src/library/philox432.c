@@ -30,7 +30,7 @@
  ***********************************************************************
  */
 
-#include <philox432.h>
+#include <clRNG/philox432.h>
 
 #include "private.h"
 #include <stdlib.h>
@@ -48,7 +48,7 @@ struct clrngPhilox432StreamCreator_ {
 };
 
 // code that is common to host and device
-#include "../cl/include/private/philox432.c.h"
+#include "../include/clRNG/private/philox432.c.h"
 
 
 /*! @brief Default initial seed of the first stream
@@ -522,7 +522,7 @@ clrngStatus clrngPhilox432DeviceRandomU01Array_(size_t streamCount, cl_mem strea
 	//create the program
 	const char *sources[4] = {
 		singlePrecision ? "#define CLRNG_SINGLE_PRECISION\n" : "",
-		"#include <philox432.clh>\n"
+		"#include <clRNG/philox432.clh>\n"
 		"__kernel void fillBufferU01(__global clrngPhilox432HostStream* streams, uint numberCount, __global ",
 		singlePrecision ? "float" : "double",
 		" * numbers) {\n"

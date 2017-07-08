@@ -13,53 +13,65 @@ MRG31k3p, MRG32k3a, LFSR113 and Philox-4×32-10 generators.
 
 - [**HTML Documentation**  
   (generated with Doxygen)](http://clmathlibraries.github.io/clRNG/htmldocs/index.html)
-- [**Tutorial Document**  
+- [**Tutorial Document** (please cite this document if you use clRNG)  
   *clRNG*: A Random Number API with Multiple Streams for OpenCL](http://clmathlibraries.github.io/clRNG/docs/clrng-api.pdf)
+
+## What's New
+
+Libraries related to clRNG, for probability distributions and quasi-Monte Carlo methods, are available:
+ - [**clProbDist**](https://github.com/umontreal-simul/clProbDist)
+ - [**clQMC**](https://github.com/umontreal-simul/clQMC)
+
+## Releases
+
+The first public version of clRNG is v1.0.0 beta. Please go to [releases](https://github.com/clMathLibraries/clRNG/releases) for downloads.
 
 ## Building
 
-Before configuring and building the library, make sure an OpenCL software
-development kit is available on your platform.
+1.  Install the runtime dependency:
 
+      - An OpenCL SDK, such as [APP SDK](http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-parallel-processing-app-sdk/).
 
-### Under Linux
+2.  Install the build dependencies:
 
-Run:
+      - The [CMake](http://www.cmake.org/) cross-platform build system.
+        Visual Studio users can use [CMake Tools for Visual Studio](https://cmaketools.codeplex.com/).
+      - A recent C compiler, such as [GCC 4.9](https://gcc.gnu.org/), or Visual Studio 2013.
 
-    cmake src
+3.  Get the [clRNG source code](https://github.com/clMathLibraries/clRNG).
+
+4.  Configure the project using CMake (to generate standard makefiles) or
+    CMake Tools for Visual Studio (to generate solution and project files).
+
+5.  Build the project.
+
+6.  Install the project (by default, the library will be installed in the
+    `package` directory under the build directory).
+
+7.  Point the environment variable `CLRNG_ROOT` to the installation directory,
+    i.e., the directory under which `include/clRNG` can be found.
+    This step is optional if the library is installed under `/usr`, which is
+    the default.
+
+8.  In order to execute the example programs (under the `bin` subdirectory of
+    the installation directory) or to link clRNG into other software, the
+    dynamic linker must be informed where to find the clRNG shared library.
+    The name and location of the shared library generally depend on the platform.
+
+9.  Optionally run the tests.
+
+### Example Instructions for Linux
+
+On a 64-bit Linux platform, steps 3 through 9 from above, executed in a
+Bash-compatible shell, could consist of:
+
+    git clone https://github.com/clMathLibraries/clRNG.git
+    mkdir clRNG.build; cd clRNG.build; cmake ../clRNG/src
     make
     make install
-
-By default, `make install` packages the files necessary for distribution of the
-library in the `package` subdirectory.
-
-
-## Installing
-
-The environment variable `CLRNG_ROOT` must be pointed to the root of the
-packaged files, or more specifically, the directory that contains the `include`
-and `cl` subdirectories.
-
-Also make sure that the clRNG shared library can be found by the dynamic
-linker.  The location of the shared library can depend on the platform.  If you
-installed the library on a 64-bit Linux platform, it can normally be found
-under the `lib64` subdirectory of the installation directory.
-
-
-### Under Linux
-
-On a 64-bit Linux platform with a Bash-compatible shell, if the current
-directory is that in which you ran `cmake src`, you can update the necessary
-environment variables by typing:
-
     export CLRNG_ROOT=$PWD/package
     export LD_LIBRARY_PATH=$CLRNG_ROOT/lib64:$LD_LIBRARY_PATH
-
-Then, you can check that everything works correctly by executing the unit tests
-with:
-
     $CLRNG_ROOT/bin/CTest
-
 
 ## Examples
 
@@ -77,8 +89,8 @@ by directly using device side headers (.clh) in your OpenCL kernel.
 #include <stdlib.h>
 #include <string.h>
 
-#include "clRNG.h"
-#include "mrg31k3p.h"
+#include "clRNG/clRNG.h"
+#include "clRNG/mrg31k3p.h"
 
 int main( void )
 {
@@ -105,7 +117,7 @@ int main( void )
     /* Sample kernel that calls clRNG device-side interfaces to generate random numbers */
     const char *kernelSrc[] = {
     "    #define CLRNG_SINGLE_PRECISION                                   \n",
-    "    #include <mrg31k3p.clh>                                          \n",
+    "    #include <clRNG/mrg31k3p.clh>                                    \n",
     "                                                                     \n",
     "    __kernel void example(__global clrngMrg31k3pHostStream *streams, \n",
     "                          __global float *out)                       \n",
@@ -134,7 +146,7 @@ int main( void )
     if(clrng_root == NULL) printf("\nSpecify environment variable CLRNG_ROOT as described\n");
     strcpy(include_str, "-I ");
     strcat(include_str, clrng_root);
-    strcat(include_str, "/cl/include");
+    strcat(include_str, "/include");
 
     /* Create sample kernel */
     kernelLines = sizeof(kernelSrc) / sizeof(kernelSrc[0]);
