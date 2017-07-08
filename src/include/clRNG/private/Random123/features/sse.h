@@ -90,7 +90,7 @@ R123_STATIC_INLINE int haveAESNI(){
 // R123_USE_feature tests for each of these in each of the
 // compilerfeatures.h files we just keep the complexity localized
 // to here...
-#if (defined(__ICC) && __ICC<1210) || (defined(_MSC_VER) && !defined(_WIN64))
+#if (defined(__ICC) && __ICC<1210) || (defined(_MSC_VER) && !defined(_WIN64) && _MSC_VER<1900)
 /* Is there an intrinsic to assemble an __m128i from two 64-bit words? 
    If not, use the 4x32-bit intrisic instead.  N.B.  It looks like Intel
    added _mm_set_epi64x to icc version 12.1 in Jan 2012.
