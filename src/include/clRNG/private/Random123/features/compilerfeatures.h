@@ -253,7 +253,7 @@ added to each of the *features.h files, AND to examples/ut_features.cpp.
 #endif
 
 #ifndef R123_STATIC_ASSERT
-#if R123_USE_CXX11_STATIC_ASSERT
+#ifdef R123_USE_CXX11_STATIC_ASSERT
 #define R123_STATIC_ASSERT(expr, msg) static_assert(expr, msg)
 #else
     /* if msg always_looked_like_this, we could paste it into the name.  Worth it? */
@@ -262,7 +262,7 @@ added to each of the *features.h files, AND to examples/ut_features.cpp.
 #endif
 
 #ifndef R123_CONSTEXPR
-#if R123_USE_CXX11_CONSTEXPR
+#ifdef R123_USE_CXX11_CONSTEXPR
 #define R123_CONSTEXPR constexpr
 #else
 #define R123_CONSTEXPR
