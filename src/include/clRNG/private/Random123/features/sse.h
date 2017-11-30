@@ -32,36 +32,33 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef _Random123_sse_dot_h__
 #define _Random123_sse_dot_h__
 
-#if R123_USE_SSE
+#ifdef R123_USE_SSE
 
-#if R123_USE_X86INTRIN_H
+#ifdef R123_USE_X86INTRIN_H
 #include <x86intrin.h>
-#endif
-#if R123_USE_IA32INTRIN_H
+#elif defined R123_USE_IA32INTRIN_H
 #include <ia32intrin.h>
 #endif
-#if R123_USE_XMMINTRIN_H
+#ifdef R123_USE_XMMINTRIN_H
 #include <xmmintrin.h>
 #endif
-#if R123_USE_EMMINTRIN_H
+#ifdef R123_USE_EMMINTRIN_H
 #include <emmintrin.h>
 #endif
-#if R123_USE_SMMINTRIN_H
+#ifdef R123_USE_SMMINTRIN_H
 #include <smmintrin.h>
 #endif
-#if R123_USE_WMMINTRIN_H
+#ifdef R123_USE_WMMINTRIN_H
 #include <wmmintrin.h>
 #endif
-#if R123_USE_INTRIN_H
-#include <intrin.h>
-#endif
+
 #ifdef __cplusplus
 #include <iostream>
 #include <limits>
 #include <stdexcept>
 #endif
 
-#if R123_USE_ASM_GNU
+#ifdef R123_USE_ASM_GNU
 
 /* bit25 of CX tells us whether AES is enabled. */
 R123_STATIC_INLINE int haveAESNI(){
@@ -147,7 +144,7 @@ R123_STATIC_INLINE __m128 _mm_castsi128_ps(__m128i si){
 
 struct r123m128i{
     __m128i m;
-#if R123_USE_CXX11_UNRESTRICTED_UNIONS
+#ifdef R123_USE_CXX11_UNRESTRICTED_UNIONS
     // C++98 forbids a union member from having *any* constructors.
     // C++11 relaxes this, and allows union members to have constructors
     // as long as there is a "trivial" default construtor.  So in C++11
@@ -158,7 +155,7 @@ struct r123m128i{
 #endif
     r123m128i& operator=(const __m128i& rhs){ m=rhs; return *this;}
     r123m128i& operator=(R123_ULONG_LONG n){ m = _mm_set_epi64x(0, n); return *this;}
-#if R123_USE_CXX11_EXPLICIT_CONVERSIONS
+#ifdef R123_USE_CXX11_EXPLICIT_CONVERSIONS
     // With C++0x we can attach explicit to the bool conversion operator
     // to disambiguate undesired promotions.  For g++, this works
     // only in 4.5 and above.
@@ -171,7 +168,7 @@ struct r123m128i{
     operator __m128i() const {return m;}
 
 private:
-#if R123_USE_SSE4_1
+#ifdef R123_USE_SSE4_1
     bool _bool() const{ return !_mm_testz_si128(m,m); }
 #else
     bool _bool() const{ return 0xf != _mm_movemask_ps(_mm_castsi128_ps(_mm_cmpeq_epi32(m, _mm_setzero_si128()))); }
@@ -183,7 +180,7 @@ R123_STATIC_INLINE r123m128i& operator++(r123m128i& v){
     __m128i zeroone = _mm_set_epi64x(R123_64BIT(0), R123_64BIT(1));
     c = _mm_add_epi64(c, zeroone);
     //return c;
-#if R123_USE_SSE4_1
+#ifdef R123_USE_SSE4_1
     __m128i zerofff = _mm_set_epi64x(0, ~(R123_64BIT(0)));
     if( R123_BUILTIN_EXPECT(_mm_testz_si128(c,zerofff), 0) ){
         __m128i onezero = _mm_set_epi64x(R123_64BIT(1), R123_64BIT(0));

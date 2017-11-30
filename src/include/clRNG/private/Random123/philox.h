@@ -171,7 +171,7 @@ R123_STATIC_INLINE Word mulhilo##W(Word a, Word b, Word *hip){               \
 // which *might* compile into better code than
 // _mulhilo_dword_tpl 
 */
-#if R123_USE_MULHILO32_ASM
+#ifdef R123_USE_MULHILO32_ASM
 #ifdef __powerpc__
 _mulhilo_asm_tpl(32, uint32_t, "mulhwu")
 #else
@@ -181,8 +181,8 @@ _mulhilo_asm_tpl(32, uint32_t, "mull")
 _mulhilo_dword_tpl(32, uint32_t, uint64_t)
 #endif
 
-#if R123_USE_PHILOX_64BIT
-#if R123_USE_MULHILO64_ASM
+#ifdef R123_USE_PHILOX_64BIT
+#ifdef R123_USE_MULHILO64_ASM
 #ifdef __powerpc64__
 _mulhilo_asm_tpl(64, uint64_t, "mulhdu")
 #else
@@ -337,7 +337,7 @@ _philox4xWround_tpl(32, uint32_t)            /* philo4x32round */
 /** \endcond */
 _philoxNxW_tpl(2, 1, 32, uint32_t)    /* philox2x32bijection */
 _philoxNxW_tpl(4, 2, 32, uint32_t)    /* philox4x32bijection */
-#if R123_USE_PHILOX_64BIT
+#ifdef R123_USE_PHILOX_64BIT
 /** \cond HIDDEN_FROM_DOXYGEN */
 _philox2xWbumpkey_tpl(64)
 _philox4xWbumpkey_tpl(64)
@@ -350,7 +350,7 @@ _philoxNxW_tpl(4, 2, 64, uint64_t)    /* philox4x64bijection */
 
 #define philox2x32(c,k) philox2x32_R(philox2x32_rounds, c, k)
 #define philox4x32(c,k) philox4x32_R(philox4x32_rounds, c, k)
-#if R123_USE_PHILOX_64BIT
+#ifdef R123_USE_PHILOX_64BIT
 #define philox2x64(c,k) philox2x64_R(philox2x64_rounds, c, k)
 #define philox4x64(c,k) philox4x64_R(philox4x64_rounds, c, k)
 #endif /* R123_USE_PHILOX_64BIT */
@@ -379,7 +379,7 @@ typedef Philox##N##x##W##_R<philox##N##x##W##_rounds> Philox##N##x##W; \
 
 _PhiloxNxW_base_tpl(r123array2x32, r123array1x32, 2, 32) // Philox2x32_R<R>
 _PhiloxNxW_base_tpl(r123array4x32, r123array2x32, 4, 32) // Philox4x32_R<R>
-#if R123_USE_PHILOX_64BIT
+#ifdef R123_USE_PHILOX_64BIT
 _PhiloxNxW_base_tpl(r123array2x64, r123array1x64, 2, 64) // Philox2x64_R<R>
 _PhiloxNxW_base_tpl(r123array4x64, r123array2x64, 4, 64) // Philox4x64_R<R>
 #endif
