@@ -216,6 +216,8 @@ elseif( CMAKE_COMPILER_IS_GNUCXX )
 	
 	set( CMAKE_CXX_FLAGS "-pthread ${CMAKE_CXX_FLAGS}" )
 	set( CMAKE_C_FLAGS "-std=c11 -Wall -pedantic-errors -pthread ${CMAKE_C_FLAGS}" )
+	set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-expansion-to-defined" )
+
 	
 	if( BUILD64 )
 		set( CMAKE_CXX_FLAGS "-m64 ${CMAKE_CXX_FLAGS}" )
