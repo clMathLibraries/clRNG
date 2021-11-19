@@ -43,34 +43,6 @@
 #define Mrg32k3a_NORM_cl_double 2.328306549295727688e-10
 #define Mrg32k3a_NORM_cl_float  2.3283064e-10
 
-#if defined(CLRNG_ENABLE_SUBSTREAMS) || !defined(__CLRNG_DEVICE_API)
-
-// clrngMrg32k3a_A1p76 and clrngMrg32k3a_A2p76 jump 2^76 steps forward
-#if defined(__CLRNG_DEVICE_API)
-__constant
-#else
-static
-#endif
-cl_ulong clrngMrg32k3a_A1p76[3][3] = {
-	{ 82758667, 1871391091, 4127413238 },
-	{ 3672831523, 69195019, 1871391091 },
-	{ 3672091415, 3528743235, 69195019 }
-};
-
-#if defined(__CLRNG_DEVICE_API)
-__constant
-#else
-static
-#endif
-cl_ulong clrngMrg32k3a_A2p76[3][3] = {
-	{ 1511326704, 3759209742, 1610795712 },
-	{ 4292754251, 1511326704, 3889917532 },
-	{ 3859662829, 4292754251, 3708466080 }
-};
-
-#endif
-
-
 clrngStatus clrngMrg32k3aCopyOverStreams(size_t count, clrngMrg32k3aStream* destStreams, const clrngMrg32k3aStream* srcStreams)
 {
 	//Check params
@@ -205,6 +177,17 @@ clrngStatus clrngMrg32k3aRewindSubstreams(size_t count, clrngMrg32k3aStream* str
 
 clrngStatus clrngMrg32k3aForwardToNextSubstreams(size_t count, clrngMrg32k3aStream* streams)
 {
+	cl_ulong __private clrngMrg32k3a_A1p76[3][3] = {
+		{ 82758667, 1871391091, 4127413238 },
+		{ 3672831523, 69195019, 1871391091 },
+		{ 3672091415, 3528743235, 69195019 }
+	};
+
+	cl_ulong __private clrngMrg32k3a_A2p76[3][3] = {
+		{ 1511326704, 3759209742, 1610795712 },
+		{ 4292754251, 1511326704, 3889917532 },
+		{ 3859662829, 4292754251, 3708466080 }
+	};
 	//Check params
 	if (!streams)
 		return clrngSetErrorString(CLRNG_INVALID_VALUE, "%s(): streams cannot be NULL", __func__);
